@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class DS_IP92_LR61_MedvedievM {
 
     public static void main(String[] args) throws IOException {
-        UndirectedGraph graph = new UndirectedGraph(new File("inputs/input2.txt"));
+        UndirectedGraph graph = new UndirectedGraph(new File("inputs/input.txt"));
         Scanner scanner = new Scanner(System.in);
         System.out.print("Euler(1) or Gamilton(2): ");
         int choice = scanner.nextInt();
@@ -180,8 +180,10 @@ class UndirectedGraph extends Graph {
         }
 
         if(!hasFalses(doneNodes) && stack.lastIndex == doneNodes.length-1) {
-            if(adjacencyMatrix[stack.getCurrentNode()][stack.getFirstNode()]==1)
+            if(adjacencyMatrix[stack.getCurrentNode()][stack.getFirstNode()]==1) {
+                stack.put(stack.getFirstNode());
                 cicles.add(stack.getString());
+            }
             else paths.add(stack.getString());
         }
 
